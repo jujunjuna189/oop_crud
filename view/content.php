@@ -43,7 +43,7 @@ $no = 1;
                     <div class="card-header bg-white">
                         <strong>Data Sekolah</strong>
                         <div class="float-end">
-                            <a href="action/add.php" class="badge bg-info text-dark text-decoration-none p-2"><i class="bi bi-plus"></i> Add Data</a>
+                            <a href="add.php" class="badge bg-info text-dark text-decoration-none p-2"><i class="bi bi-plus"></i> Add Data</a>
                         </div>
                     </div>
                     <div class="card-body">
