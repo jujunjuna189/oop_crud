@@ -1,3 +1,7 @@
+<?php
+include '../controller/SekolahController.php';
+$controller = new SekolahController();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,7 +25,7 @@
                     <div class="card-header">
                         Add Data Sekolah
                     </div>
-                    <form action="action_proses.php" method="post">
+                    <form action="<?php $controller->simpanData() ?>" method="post">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-6">

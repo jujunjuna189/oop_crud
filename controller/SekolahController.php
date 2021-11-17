@@ -15,6 +15,19 @@ class SekolahController
         $this->model = new SekolahModel($conn);
     }
 
+    function setting_notif()
+    {
+        if (isset($_GET['action'])) {
+            $action = $_GET['action'];
+            $bg = $_GET['status'] == 'success' ? 'info' : 'danger';
+
+            $data['action'] = $action;
+            $data['bg'] = $bg;
+
+            return $data;
+        }
+    }
+
     function index()
     {
         $hasil = $this->model->tampil_data();
@@ -26,5 +39,76 @@ class SekolahController
         $id = $_GET['id'];
         $hasil = $this->model->tampil_data_by_id($id);
         return $hasil;
+    }
+
+    function simpanData()
+    {
+        if (isset($_POST['add_data'])) {
+            $nis = $_POST['nis'];
+            $nama_sekolah = $_POST['nama_sekolah'];
+            $alamat_sekolah = $_POST['alamat_sekolah'];
+            $longitude = $_POST['longitude'];
+            $latitude = $_POST['latitude'];
+
+            $data[] = array(
+                'nis'               => $nis,
+                'nama_sekolah'      => $nama_sekolah,
+                'alamat_sekolah'    => $alamat_sekolah,
+                'longitude'         => $longitude,
+                'latitude'          => $latitude,
+            );
+
+            $result = $this->model->simpanData($data);
+
+            if ($result) {
+                header("location:content.php?action=Add&&status=success");
+            } else {
+                header("location:content.php?action=Add&&status=failed");
+            }
+        }
+    }
+
+    function updateData()
+    {
+        if (isset($_POST['edit_data'])) {
+            $id = $_GET['id'];
+
+            $nis = $_POST['nis'];
+            $nama_sekolah = $_POST['nama_sekolah'];
+            $alamat_sekolah = $_POST['alamat_sekolah'];
+            $longitude = $_POST['longitude'];
+            $latitude = $_POST['latitude'];
+
+            $data[] = array(
+                'nis'               => $nis,
+                'nama_sekolah'      => $nama_sekolah,
+                'alamat_sekolah'    => $alamat_sekolah,
+                'longitude'         => $longitude,
+                'latitude'          => $latitude,
+            );
+
+            $result = $this->model->updateData($data, $id);
+
+            if ($result) {
+                header("location:content.php?action=Update&&status=success");
+            } else {
+                header("location:content.php?action=Update&&status=failed");
+            }
+        }
+    }
+
+    function hapusData()
+    {
+        if (isset($_GET['delete'])) {
+            $id = $_GET['id'];
+
+            $result = $this->model->hapusData($id);
+
+            if ($result) {
+                header("location:content.php?action=Delete&&status=success");
+            } else {
+                header("location:content.php?action=Delete&&status=failed");
+            }
+        }
     }
 }

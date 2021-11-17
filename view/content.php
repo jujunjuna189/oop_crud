@@ -3,6 +3,7 @@ include '../controller/SekolahController.php';
 
 $controller = new SekolahController();
 $hasil = $controller->index();
+$notif = $controller->setting_notif();
 $no = 1;
 
 ?>
@@ -32,8 +33,8 @@ $no = 1;
 
                 <!-- Notifikasi -->
                 <?php if (isset($_GET['action'])) : ?>
-                    <div class="alert alert-<?= $bg ?> alert-dismissible fade show" role="alert">
-                        <strong>Berhasil</strong> <?= $action ?> Data.
+                    <div class="alert alert-<?= $notif['bg'] ?> alert-dismissible fade show" role="alert">
+                        <strong>Berhasil</strong> <?= $notif['action'] ?> Data.
                         <a href="index.php" class="btn-close"></a>
                     </div>
                 <?php endif ?>
