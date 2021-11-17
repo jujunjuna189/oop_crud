@@ -12,6 +12,13 @@ class SekolahModel
     {
         $row = $this->db->prepare("SELECT * FROM sekolah");
         $row->execute();
-        return $hasil = $row->fetchAll();
+        return $row->fetchAll();
+    }
+
+    function tampil_data_by_id($id = '')
+    {
+        $row = $this->db->prepare("SELECT * FROM sekolah WHERE id = '$id'");
+        $row->execute();
+        return $row->fetch();
     }
 }

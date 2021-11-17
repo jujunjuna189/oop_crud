@@ -3,20 +3,28 @@
 include '../Database.php';
 include '../model/SekolahModel.php';
 
-// class SekolahController
-// {
-//     private $model;
+class SekolahController
+{
 
-// function __construct()
-// {
-$db = new Database();
-$conn = $db->DBConnect();
-$model = new SekolahModel($conn);
-// }
+    public $model;
 
-// function index()
-// {
-$hasil = $model->tampil_data();
-$no = 1;
-    // }
-// }
+    function __construct()
+    {
+        $db = new Database();
+        $conn = $db->DBConnect();
+        $this->model = new SekolahModel($conn);
+    }
+
+    function index()
+    {
+        $hasil = $this->model->tampil_data();
+        return $hasil;
+    }
+
+    function edit()
+    {
+        $id = $_GET['id'];
+        $hasil = $this->model->tampil_data_by_id($id);
+        return $hasil;
+    }
+}

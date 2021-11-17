@@ -1,5 +1,10 @@
 <?php
 include '../controller/SekolahController.php';
+
+$controller = new SekolahController();
+$hasil = $controller->index();
+$no = 1;
+
 ?>
 
 <!DOCTYPE html>
@@ -66,7 +71,7 @@ include '../controller/SekolahController.php';
                                             <td><?= $val['latitude'] ?></td>
                                             <td>
                                                 <a href="action/view.php?id=<?= $val['id'] ?>" class="badge bg-info text-dark text-decoration-none p-2"><i class="bi bi-eye"></i></a>
-                                                <a href="action/edit.php?id=<?= $val['id'] ?>" class="badge bg-warning text-dark text-decoration-none p-2"><i class="bi bi-pen"></i></a>
+                                                <a href="edit.php?id=<?= $val['id'] ?>" class="badge bg-warning text-dark text-decoration-none p-2"><i class="bi bi-pen"></i></a>
                                                 <a href="#" data-bs-toggle="modal" data-bs-target="#deleteModal<?= $val['id'] ?>" class="badge bg-danger text-white text-decoration-none p-2"><i class="bi bi-trash"></i></a>
 
                                                 <!-- Modal -->
