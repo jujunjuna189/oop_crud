@@ -31,19 +31,22 @@ class SekolahModel
 
         foreach ($data as $arrayIndex => $row) {
             $params = array();
-            foreach ($row as $coloumnNames => $coloumnValue) {
-                $param = ":" . $coloumnNames . $arrayIndex;
+            foreach ($row as $coloumnName => $coloumnValue) {
+                $param = ":" . $coloumnName . $arrayIndex;
                 $params[] = $param;
                 $toBind[$param] = $coloumnValue;
             }
             $rowsSql[] = "(" . implode(", ", $params) . ")";
         }
+
         $sql = "INSERT INTO sekolah (" . implode(", ", $coloumnNames) . ") VALUES " . implode(", ", $rowsSql);
         $row = $this->db->prepare($sql);
 
         foreach ($toBind as $param => $val) {
             $row->bindValue($param, $val);
         }
+
+        return $row->execute();
     }
 
     function updateData($data, $id)

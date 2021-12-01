@@ -31,7 +31,7 @@ $data = $controller->edit();
                     <div class="card-header">
                         Edit Data Sekolah
                     </div>
-                    <form action="action_proses.php?id=<?= $data['id'] ?>" method="post">
+                    <form action="<?= $controller->updateData() ?>" method="post">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-6">

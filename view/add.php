@@ -25,7 +25,7 @@ $controller = new SekolahController();
                     <div class="card-header">
                         Add Data Sekolah
                     </div>
-                    <form action="<?php $controller->simpanData() ?>" method="post">
+                    <form action="<?php echo $controller->simpanData() ?>" method="post" name="form1">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-lg-6">

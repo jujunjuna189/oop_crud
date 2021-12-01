@@ -79,7 +79,7 @@ class SekolahController
             $longitude = $_POST['longitude'];
             $latitude = $_POST['latitude'];
 
-            $data[] = array(
+            $data = array(
                 'nis'               => $nis,
                 'nama_sekolah'      => $nama_sekolah,
                 'alamat_sekolah'    => $alamat_sekolah,
@@ -99,15 +99,15 @@ class SekolahController
 
     function hapusData()
     {
-        if (isset($_GET['delete'])) {
-            $id = $_GET['id'];
+        if (isset($_POST['delete'])) {
+            $id = $_POST['id'];
 
             $result = $this->model->hapusData($id);
 
             if ($result) {
-                header("location:content.php?action=Delete&&status=success");
+                header("Location:content.php?action=Update&&status=success");
             } else {
-                header("location:content.php?action=Delete&&status=failed");
+                header("Location:content.php?action=Update&&status=failed");
             }
         }
     }

@@ -35,7 +35,7 @@ $no = 1;
                 <?php if (isset($_GET['action'])) : ?>
                     <div class="alert alert-<?= $notif['bg'] ?> alert-dismissible fade show" role="alert">
                         <strong>Berhasil</strong> <?= $notif['action'] ?> Data.
-                        <a href="index.php" class="btn-close"></a>
+                        <a href="content.php" class="btn-close"></a>
                     </div>
                 <?php endif ?>
 
@@ -83,13 +83,16 @@ $no = 1;
                                                                 <h5 class="modal-title" id="exampleModalLabel">Konfirmasi Delete Data Surat</h5>
                                                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
-                                                            <div class="modal-body">
-                                                                <h6>Apakah anda yakin ingin menghapus data ini<strong><span class="grt"></span></strong> ?</h6>
-                                                            </div>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                                                <a href="action/action_proses.php?id=<?= $val['id'] ?>" class="btn btn-danger">Delete</a>
-                                                            </div>
+                                                            <form action="<?= $controller->hapusData() ?>" method="post">
+                                                                <div class="modal-body">
+                                                                    <h6>Apakah anda yakin ingin menghapus data ini<strong><span class="grt"></span></strong> ?</h6>
+                                                                    <input type="hidden" name="id" id="id" value="<?= $val['id'] ?>">
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                                                                    <button type="submit" name="delete" class="btn btn-danger">Delete</button>
+                                                                </div>
+                                                            </form>
                                                         </div>
                                                     </div>
                                                 </div>
