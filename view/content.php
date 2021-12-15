@@ -27,14 +27,40 @@ $no = 1;
 
 <body>
 
+    <!-- Modal -->
+    <div class="modal fade" id="modalLogout" aria-hidden="true" aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalToggleLabel">Logout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="<?= $controller->logout() ?>" method="post">
+                    <div class="modal-body">
+                        <h6>Apakah anda yakin ingin keluar aplikasi<strong><span class="grt"></span></strong> ?</h6>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" name="logout" class="btn btn-danger">Logout</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <div class="container mt-4">
+        <div class="row">
+            <div class="col-lg-12 text-end mb-4">
+                <a class="badge bg-info text-decoration-none p-2 text-dark" data-bs-toggle="modal" href="#" data-bs-target="#modalLogout" role="button">Logout</a>
+            </div>
+        </div>
         <div class="row">
             <div class="col-lg-12">
 
                 <!-- Notifikasi -->
                 <?php if (isset($_GET['action'])) : ?>
                     <div class="alert alert-<?= $notif['bg'] ?> alert-dismissible fade show" role="alert">
-                        <strong>Berhasil</strong> <?= $notif['action'] ?> Data.
+                        <strong>Berhasil</strong> <?= $notif['action'] == 'Login' ? $notif['action'] : $notif['action'] . ' Data.' ?>
                         <a href="content.php" class="btn-close"></a>
                     </div>
                 <?php endif ?>

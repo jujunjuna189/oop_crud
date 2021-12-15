@@ -15,6 +15,17 @@ class SekolahController
         $this->model = new SekolahModel($conn);
     }
 
+    function index()
+    {
+        session_start();
+        if (!empty($_SESSION)) {
+            $hasil = $this->model->tampil_data();
+            return $hasil;
+        } else {
+            header('Location:login.php');
+        }
+    }
+
     function setting_notif()
     {
         if (isset($_GET['action'])) {
@@ -26,12 +37,6 @@ class SekolahController
 
             return $data;
         }
-    }
-
-    function index()
-    {
-        $hasil = $this->model->tampil_data();
-        return $hasil;
     }
 
     function edit()
@@ -109,6 +114,15 @@ class SekolahController
             } else {
                 header("Location:content.php?action=Update&&status=failed");
             }
+        }
+    }
+
+    function logout()
+    {
+        if (isset($_POST['logout'])) {
+            session_start();
+            session_destroy();
+            header('Location:login.php?signout=yes');
         }
     }
 }

@@ -27,7 +27,7 @@ class AuthController
                 session_start();
                 $_SESSION['nama_pengguna'] = $result['nama_pengguna'];
                 $_SESSION['username'] = $result['username'];
-                header("Location:content.php");
+                header("Location:content.php?action=Login&&status=success");
             }
         }
     }
