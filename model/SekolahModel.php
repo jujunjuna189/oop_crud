@@ -15,6 +15,40 @@ class SekolahModel
         return $row->fetchAll();
     }
 
+    function tampil_status()
+    {
+        $row = $this->db->prepare("SELECT * FROM status");
+        $row->execute();
+        return $row->fetchAll();
+    }
+
+    function setStatus($data)
+    {
+        $rowsSql = array();
+        $toBind = array();
+
+        $coloumnNames = array_keys($data[0]);
+
+        foreach ($data as $arrayIndex => $row) {
+            $params = array();
+            foreach ($row as $coloumnName => $coloumnValue) {
+                $param = ":" . $coloumnName . $arrayIndex;
+                $params[] = $param;
+                $toBind[$param] = $coloumnValue;
+            }
+            $rowsSql[] = "(" . implode(", ", $params) . ")";
+        }
+
+        $sql = "INSERT INTO status (" . implode(", ", $coloumnNames) . ") VALUES " . implode(", ", $rowsSql);
+        $row = $this->db->prepare($sql);
+
+        foreach ($toBind as $param => $val) {
+            $row->bindValue($param, $val);
+        }
+
+        return $row->execute();
+    }
+
     function tampil_data_by_id($id = '')
     {
         $row = $this->db->prepare("SELECT * FROM sekolah WHERE id = '$id'");

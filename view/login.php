@@ -55,6 +55,13 @@ $controller = new AuthController();
                                 <label>Your password</label>
                                 <input name="password" class="form-control" placeholder="******" type="password" required="required" autocomplete="off">
                             </div> <!-- form-group// -->
+                            <div class="form-group mt-2">
+                                <!-- Captcha -->
+                                <img src="captcha.php" alt="" srcset="" width="150px" height="40px">
+                                <div class="mt-2">
+                                    <input name="code" value="" />
+                                </div>
+                            </div>
                             <div class="row">
                                 <div class="col-lg-6">
                                     <div class="form-group mt-3">
@@ -69,8 +76,6 @@ $controller = new AuthController();
                             </div>
                         </form>
                     </div>
-                </div>
-                <div class="col-sm-4">
                 </div>
             </div>
         </div>

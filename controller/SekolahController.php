@@ -39,6 +39,27 @@ class SekolahController
         }
     }
 
+    function getStatus()
+    {
+        $hasil = $this->model->tampil_status();
+        echo json_encode($hasil);
+    }
+
+    function setStatus()
+    {
+
+        $status = $_POST['status'];
+        $data[] = array(
+            'status' => $status,
+        );
+
+
+        $add = $this->model->setStatus($data);
+        $response['status_code'] = 1;
+        $response['status'] = 'Success';
+        echo json_encode($response);
+    }
+
     function edit()
     {
         $id = $_GET['id'];
@@ -54,6 +75,7 @@ class SekolahController
             $alamat_sekolah = $_POST['alamat_sekolah'];
             $longitude = $_POST['longitude'];
             $latitude = $_POST['latitude'];
+            $status = $_POST['status'];
 
             $data[] = array(
                 'nis'               => $nis,
@@ -61,6 +83,7 @@ class SekolahController
                 'alamat_sekolah'    => $alamat_sekolah,
                 'longitude'         => $longitude,
                 'latitude'          => $latitude,
+                'status'            => $status,
             );
 
             $result = $this->model->simpanData($data);

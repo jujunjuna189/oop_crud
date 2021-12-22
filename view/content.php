@@ -22,6 +22,8 @@ $no = 1;
 
     <!-- Online -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
 </head>
 
@@ -84,6 +86,7 @@ $no = 1;
                                         <th>Alamat Sekolah</th>
                                         <th>Longitude</th>
                                         <th>Latitude</th>
+                                        <th>Status</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -96,6 +99,7 @@ $no = 1;
                                             <td><?= $val['alamat_sekolah'] ?></td>
                                             <td><?= $val['longitude'] ?></td>
                                             <td><?= $val['latitude'] ?></td>
+                                            <td><?= $val['status'] ?></td>
                                             <td>
                                                 <a href="action/view.php?id=<?= $val['id'] ?>" class="badge bg-info text-dark text-decoration-none p-2"><i class="bi bi-eye"></i></a>
                                                 <a href="edit.php?id=<?= $val['id'] ?>" class="badge bg-warning text-dark text-decoration-none p-2"><i class="bi bi-pen"></i></a>
