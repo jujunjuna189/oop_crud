@@ -39,12 +39,14 @@ $controller = new AuthController();
                         <small>Login Anda Gagal, Periksa Kembali Username dan Password</small>
                     </div>
                 </div>
-                <?php if (isset($_GET['chaptcha'])) : ?>
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Chaptcha Tidak Sama</strong>
-                        <a href="login.php" class="btn-close"></a>
-                    </div>
-                <?php endif ?>
+                <div id="notifikasiChaptcha">
+                    <?php if (isset($_GET['chaptcha'])) : ?>
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Chaptcha Tidak Sama</strong>
+                            <a href="login.php" class="btn-close"></a>
+                        </div>
+                    <?php endif ?>
+                </div>
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Sign in</h4>
@@ -95,10 +97,17 @@ $controller = new AuthController();
             <?php if (empty($_GET['get'])) { ?>
                 $("#notifikasi").hide();
             <?php } ?>
+
+            <?php if (empty($_GET['chaptcha'])) { ?>
+                $("#notifikasiChaptcha").hide();
+            <?php } ?>
+
             var logingagal = function() {
                 $("#logout").fadeOut('slow');
                 $("#notifikasi").fadeOut('slow');
+                $("#notifikasiChaptcha").fadeOut('slow');
             };
+
             setTimeout(logingagal, 4000);
         </script>
 </body>
