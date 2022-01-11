@@ -67,6 +67,16 @@ $data = $controller->edit();
                                     </div>
                                 </div>
                                 <div class="col-lg-12 mt-3">
+                                    <div class="form-group">
+                                        <small>Status</small>
+                                        <div class="d-flex">
+                                            <select name="status" id="status" class="form-control">
+                                                <option>Choose Item</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 mt-3">
                                     <a href="content.php" class="btn bg-secondary text-white"><i class="bi bi-arrow-left"></i> Cancel</a>
                                     <div class="form-group float-end">
                                         <button type="submit" name="edit_data" class="btn bg-info"><i class="bi bi-folder-check"></i> Save</button>
@@ -83,6 +93,34 @@ $data = $controller->edit();
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(function() {
+            show_status();
+        });
+
+        function show_status() {
+            $.ajax({
+                url: 'api.php',
+                type: 'GET',
+                async: false,
+                dataType: 'json',
+                success: function(data) {
+                    let html = '';
+                    $('#status').empty();
+                    html += '<option value="<?= $data['status'] ?>"><?= $data['status'] ?></option>';
+                    $.each(data, function(i, row) {
+                        html += '<option value="' + row.status + '">' + row.status + '</option>';
+                    });
+
+                    $('#status').html(html);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            });
+        }
+    </script>
 
 </body>
 

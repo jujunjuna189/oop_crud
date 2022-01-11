@@ -106,6 +106,7 @@ class SekolahController
             $alamat_sekolah = $_POST['alamat_sekolah'];
             $longitude = $_POST['longitude'];
             $latitude = $_POST['latitude'];
+            $status = $_POST['status'];
 
             $data = array(
                 'nis'               => $nis,
@@ -113,6 +114,7 @@ class SekolahController
                 'alamat_sekolah'    => $alamat_sekolah,
                 'longitude'         => $longitude,
                 'latitude'          => $latitude,
+                'status'            => $status,
             );
 
             $result = $this->model->updateData($data, $id);

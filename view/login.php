@@ -39,6 +39,12 @@ $controller = new AuthController();
                         <small>Login Anda Gagal, Periksa Kembali Username dan Password</small>
                     </div>
                 </div>
+                <?php if (isset($_GET['chaptcha'])) : ?>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Chaptcha Tidak Sama</strong>
+                        <a href="login.php" class="btn-close"></a>
+                    </div>
+                <?php endif ?>
                 <div class="card">
                     <div class="card-header">
                         <h4 class="card-title">Sign in</h4>

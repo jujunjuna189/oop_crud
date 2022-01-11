@@ -17,17 +17,21 @@ class AuthController
     function proses_login()
     {
         if (isset($_POST['login'])) {
-            $username = strip_tags($_POST['username']);
-            $password = strip_tags($_POST['password']);
-            $result = $this->model->proses_login($username, $password);
+            session_start();
+            if ($_POST['code'] == $_SESSION['code']) {
+                $username = strip_tags($_POST['username']);
+                $password = strip_tags($_POST['password']);
+                $result = $this->model->proses_login($username, $password);
 
-            if ($result  == 'gagal') {
-                header("Location:login.php");
+                if ($result  == 'gagal') {
+                    header("Location:login.php");
+                } else {
+                    $_SESSION['nama_pengguna'] = $result['nama_pengguna'];
+                    $_SESSION['username'] = $result['username'];
+                    header("Location:content.php?action=Login&&status=success");
+                }
             } else {
-                session_start();
-                $_SESSION['nama_pengguna'] = $result['nama_pengguna'];
-                $_SESSION['username'] = $result['username'];
-                header("Location:content.php?action=Login&&status=success");
+                header("Location:login.php?chaptcha=chaptcha");
             }
         }
     }
