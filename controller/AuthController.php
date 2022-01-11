@@ -32,25 +32,21 @@ class AuthController
         }
     }
 
-    function acak_captcha()
+    function acakCaptcha()
     {
-        // membuat gambar dengan menentukan ukuran
-        $gbr = imagecreate(200, 50);
-        // pengaturan font captcha
-        $color = imagecolorallocate($gbr, 253, 252, 252);
-        $font = "Allura-Regular.otf";
-        $ukuran_font = 20;
-        $posisi = 32;
+        $alphabet = "abcdefghijklmnopqrstuwxyzABCDEFGHIJKLMNOPQRSTUWXYZ0123456789";
 
-        for ($i = 0; $i <= 5; $i++) {
-            // jumlah karakter
-            $angka = rand(0, 9);
+        //untuk menyatakan $pass sebagai array
+        $pass = array();
 
-            $_SESSION["Captcha"] .= $angka;
-
-            $kemiringan = rand(20, 20);
-
-            imagettftext($gbr, $ukuran_font, $kemiringan, 8 + 15 * $i, $posisi, $color, $font, $angka);
+        //masukkan -2 dalam string length
+        $panjangAlpha = strlen($alphabet) - 2;
+        for ($i = 0; $i < 5; $i++) {
+            $n = rand(0, $panjangAlpha);
+            $pass[] = $alphabet[$n];
         }
+
+        //ubah array menjadi string
+        return implode($pass);
     }
 }

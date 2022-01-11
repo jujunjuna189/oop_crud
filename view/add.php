@@ -156,8 +156,7 @@ $controller = new SekolahController();
                     success: function(data) {
                         show_status();
                         alert('Success added data');
-
-
+                        location.reload();
                     },
                     error: function(data) {
                         console.log(data);

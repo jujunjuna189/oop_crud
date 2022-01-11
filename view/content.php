@@ -74,6 +74,9 @@ $no = 1;
                         <div class="float-end">
                             <a href="add.php" class="badge bg-info text-dark text-decoration-none p-2"><i class="bi bi-plus"></i> Add Data</a>
                         </div>
+                        <div class="float-end px-2">
+                            <a href="report_view.php" class="badge bg-info text-dark text-decoration-none p-2"><i class="bi bi-plus"></i> Cetak Laporan</a>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">

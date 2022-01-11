@@ -1,35 +1,25 @@
 <?php
-
+include '../controller/AuthController.php';
+$ctrl = new AuthController();
 //mengaktifkan session
 session_start();
 
-header("Content-type: image/png");
-
+$code = $ctrl->acakCaptcha();
 // menentukan session
-$_SESSION["Captcha"] = "";
+$_SESSION["code"] = $code;
 
 // membuat gambar dengan menentukan ukuran
-$gbr = imagecreate(200, 50);
+$wh = imagecreatetruecolor(240, 50);
 
 //warna background captcha
-imagecolorallocate($gbr, 69, 179, 157);
+$bgc = imagecolorallocate($wh, 30, 86, 165);
 
-// pengaturan font captcha
-$color = imagecolorallocate($gbr, 253, 252, 252);
-$font = "Allura-Regular.otf";
-$ukuran_font = 20;
-$posisi = 32;
-// membuat nomor acak dan ditampilkan pada gambar
-for ($i = 0; $i <= 5; $i++) {
-    // jumlah karakter
-    $angka = rand(0, 9);
+$fc = imagecolorallocate($wh, 240, 240, 245);
+imagefill($wh, 0, 0, $bgc);
 
-    $_SESSION["Captcha"] .= $angka;
+imagestring($wh, 10, 50, 15, $code, $fc);
 
-    $kemiringan = rand(20, 20);
-
-    imagettftext($gbr, $ukuran_font, $kemiringan, 8 + 15 * $i, $posisi, $color, $font, $angka);
-}
-//untuk membuat gambar 
-imagepng($gbr);
-imagedestroy($gbr);
+//buat gambar
+header("content-type: image/jpg");
+imagejpeg($wh);
+imagedestroy($wh);
