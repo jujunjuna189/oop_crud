@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 11, 2022 at 12:23 PM
+-- Generation Time: Jan 12, 2022 at 05:16 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -42,8 +42,8 @@ CREATE TABLE `sekolah` (
 --
 
 INSERT INTO `sekolah` (`id`, `nis`, `nama_sekolah`, `alamat_sekolah`, `longitude`, `latitude`, `status`) VALUES
-(24, '456675676', 'LP3I', 'sdfdgdfg', '435345', '45645756', ''),
-(25, '435465', 'SMK', 'sadsfdg', 'w3443545', 'dfg34354', 'Activated');
+(24, '456675676', 'LP3I', 'sdfdgdfg', '435345', '45645756', 'Pending'),
+(43, '546456', 'LP3i', 'rtytry', '324324', '8785695', 'Activated');
 
 -- --------------------------------------------------------
 
@@ -127,7 +127,7 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT for table `sekolah`
 --
 ALTER TABLE `sekolah`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `status`
