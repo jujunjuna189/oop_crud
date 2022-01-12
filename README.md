@@ -1,2 +1,0 @@
-# UAS-Ujun-Junaedi
- UAS
