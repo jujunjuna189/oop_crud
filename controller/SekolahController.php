@@ -133,13 +133,8 @@ class SekolahController
             $id = $_POST['id'];
 
             $result = $this->model->hapusData($id);
-
-            if ($result) {
-                header("Location:content.php?action=Update&&status=success");
-            } else {
-                header("Location:content.php?action=Update&&status=failed");
-            }
         }
+        echo json_encode('Ok');
     }
 
     function logout()
@@ -147,7 +142,7 @@ class SekolahController
         if (isset($_POST['logout'])) {
             session_start();
             session_destroy();
-            header('Location:login.php?signout=yes');
+            header('location:login.php?signout=yes');
         }
     }
 }
